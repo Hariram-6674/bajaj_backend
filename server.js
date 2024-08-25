@@ -6,8 +6,6 @@ const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 app.use(cors());
-
-// Hardcoded user information for different datasets
 const hardcodedResponses = {
   "set1": {
     email: "john@xyz.com",
@@ -35,7 +33,6 @@ const hardcodedResponses = {
 app.post('/bfhl', (req, res) => {
   const { data } = req.body;
 
-  // Validate data
   if (!Array.isArray(data)) {
     return res.status(400).json({
       is_success: false,
@@ -43,7 +40,6 @@ app.post('/bfhl', (req, res) => {
     });
   }
 
-  // Define hardcoded responses based on data
   const dataStr = JSON.stringify(data.sort());
   let responseKey;
 
